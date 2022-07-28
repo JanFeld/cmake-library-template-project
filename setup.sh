@@ -26,4 +26,5 @@ ${SED_EXEC} -i -E "s/@PROJECT_NAME@/${PROJECT_NAME_UPPER}/g" cmake/version.h.in
 ${SED_EXEC} -i -E "s/@LIBNAME@/$2/g" CMakeLists.txt cmake/*.cmake.in
 
 mv cmake/PROJECT_NAMEConfig.cmake.in $1Config.cmake.in
-mkdir "include/$2"
+mkdir -pf "include/$2"
+mkdir -f src/
