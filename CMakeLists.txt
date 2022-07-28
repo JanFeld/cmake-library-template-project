@@ -24,6 +24,7 @@ set(@PROJECT_NAME@_HEADER
 set(@PROJECT_NAME@_PUBLIC_HEADER
 )
 
+configure_file(cmake/version.h.in ${CMAKE_CURRENT_LIST_DIR}/src/version.h)
 
 ################################################################################
 # Target setup

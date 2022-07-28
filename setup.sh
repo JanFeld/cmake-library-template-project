@@ -19,7 +19,11 @@ then
 	SED_EXEC=$(which gsed)
 fi
 
-${SED_EXEC} -i -E "s/@PROJECT_NAME@/$1/g" CMakeLists.txt cmake/*.cmake.in
-${SED_EXEC} -i -E "s/@LIBNAME@/$2/g" CMakeLists cmake/*.cmake.in
+PROJECT_NAME_UPPER=$(echo "$1" | ${SED_EXEC} -E "s/(.*)/\\U\\1/g")
+
+${SED_EXEC} -i -E "s/@PROJECT_NAME@/$1/g" CMakeLists.txt cmake/*.cmake.in 
+${SED_EXEC} -i -E "s/@PROJECT_NAME@/${PROJECT_NAME_UPPER}/g" cmake/version.h.in
+${SED_EXEC} -i -E "s/@LIBNAME@/$2/g" CMakeLists.txt cmake/*.cmake.in
 
 mv cmake/PROJECT_NAMEConfig.cmake.in $1Config.cmake.in
+mkdir "include/$2"
