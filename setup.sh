@@ -28,3 +28,4 @@ ${SED_EXEC} -i -E "s/@LIBNAME@/$2/g" CMakeLists.txt cmake/*.cmake.in
 mv cmake/PROJECT_NAMEConfig.cmake.in cmake/$1Config.cmake.in
 mkdir -p "include/$2"
 mkdir -p src/
+touch src/$2.cc

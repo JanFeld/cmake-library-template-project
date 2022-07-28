@@ -16,6 +16,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ################################################################################
 
 set(@PROJECT_NAME@_SOURCES
+	src/@LIBNAME@.cc
 )
 
 set(@PROJECT_NAME@_HEADER
@@ -36,12 +37,12 @@ set_target_properties(@LIBNAME@
 	VERSION	${PROJECT_VERSION}
 	SOVERSION ${PROJECT_VERSION_MAJOR}
 	CXX_STANDARD 20
-	CXX_STANDARD_REQUIRED
+	CXX_STANDARD_REQUIRED ON
 	CXX_VISIBILITY_PRESET hidden
 	VISIBILITY_INLINES_HIDDEN YES
 )
 
-target_compile_definitions(@LIBNAME@
+target_compile_options(@LIBNAME@
 	PRIVATE
 	-Wall
 	-Wextra
@@ -69,8 +70,8 @@ target_sources(@LIBNAME@
 # Install
 ################################################################################
 
-set(@LIBNAME@_INCLUDE_DIRS ${CMAKE_INSTALL_INCLUDEDIR})
-set(@LIBNAME@_LIBRARIES @LIBNAME@)
+set(@PROJECT_NAME@_INCLUDE_DIRS ${CMAKE_INSTALL_INCLUDEDIR})
+set(@PROJECT_NAME@_LIBRARIES @LIBNAME@)
 
 write_basic_package_version_file(
 	${CMAKE_CURRENT_BINARY_DIR}/@PROJECT_NAME@ConfigVersion.cmake
